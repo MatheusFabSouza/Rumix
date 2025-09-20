@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>{% block title %}Rumix{% endblock %}</title>
   {% load static %}
-  <link rel="stylesheet" href="{% static 'rumix/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
   <header>
@@ -16,6 +16,9 @@
       <a href="{% url 'rumix:leiloes_lista' %}">Leilões</a> |
       <a href="{% url 'rumix:perfil' %}">Perfil</a> |
       <a href="{% url 'rumix:sobre' %}">Sobre</a>
+      <a href="{% url 'rumix:login_cadastro' %}">
+    <img src="{% static 'images/user.png' %}" alt="Login" style="height:25px; vertical-align:middle;">
+      </a>
     </nav>
   </header>
 

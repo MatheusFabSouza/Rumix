@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Rumix - Login/Cadastro</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<style>
+    .form-container { max-width: 400px; margin: 50px auto; padding: 20px; background: #01441b; color: #fff; border-radius: 8px; }
+    .form-container form { display: none; }
+    .form-container form.active { display: block; }
+    .toggle-btn { cursor: pointer; color: #ffcc00; text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Rumix</h2>
+
+    <form method="post" class="active" id="loginForm">
+        {% csrf_token %}
+        {{ login_form.as_p }}
+        <button type="submit" name="login">Login</button>
+        <p>Não tem conta? <span class="toggle-btn" onclick="toggleForm()">Crie aqui</span></p>
+    </form>
+
+    <form method="post" id="cadastroForm">
+        {% csrf_token %}
+        {{ cadastro_form.as_p }}
+        <button type="submit" name="cadastro">Criar Conta</button>
+        <p>Já tem conta? <span class="toggle-btn" onclick="toggleForm()">Faça login</span></p>
+    </form>
+
+</div>
+
+<script>
+function toggleForm() {
+    const login = document.getElementById('loginForm');
+    const cadastro = document.getElementById('cadastroForm');
+    login.classList.toggle('active');
+    cadastro.classList.toggle('active');
+}
+</script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 
 from django.urls import path
 from . import views
+from django.contrib.auth import views as auth_views
 
 app_name = "rumix"
 
@@ -16,4 +17,6 @@ urlpatterns = [
     path("leiloes/<int:id>/", views.leilao_detalhe, name="leilao_detalhe"),
     path("perfil/", views.perfil, name="perfil"),
     path("sobre/", views.sobre, name="sobre"),
+    path('login/', views.login_cadastro, name='login_cadastro'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
 ]

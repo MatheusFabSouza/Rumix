@@ -1,0 +1,17 @@
+{% extends "rumix/base.html" %}
+{% load static %}
+
+{% block title %}{{ titulo }}{% endblock %}
+
+{% block content %}
+  <section style="text-align:center; padding:2rem;">
+    <h1>{{ titulo }}</h1>
+    <p style="max-width:900px; margin:0 auto;">{{ descricao }}</p>
+
+    <hr style="margin:2rem 0;">
+
+    <h2>Últimos posts</h2>
+    <p>Aqui vão aparecer os posts do feed (ainda não implementados).</p>
+    <p><a href="{% url 'rumix:feed_lista' %}">Ver feed completo</a></p>
+  </section>
+{% endblock %}
