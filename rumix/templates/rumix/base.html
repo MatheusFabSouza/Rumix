@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Rumix{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'rumix/css/style.css' %}">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="{% url 'rumix:index' %}">Início</a> |
+      <a href="{% url 'rumix:feed_lista' %}">Feed</a> |
+      <a href="{% url 'rumix:animais_lista' %}">Animais</a> |
+      <a href="{% url 'rumix:fazendas_lista' %}">Fazendas</a> |
+      <a href="{% url 'rumix:leiloes_lista' %}">Leilões</a> |
+      <a href="{% url 'rumix:perfil' %}">Perfil</a> |
+      <a href="{% url 'rumix:sobre' %}">Sobre</a>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>© 2025 Rumix — Rede Rural</p>
+  </footer>
+</body>
+</html>
