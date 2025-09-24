@@ -1,33 +1,67 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Rumix{% endblock %}</title>
-  {% load static %}
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
-  <header>
-    <nav>
-      <a href="{% url 'rumix:index' %}">Início</a> |
-      <a href="{% url 'rumix:feed_lista' %}">Feed</a> |
-      <a href="{% url 'rumix:animais_lista' %}">Animais</a> |
-      <a href="{% url 'rumix:fazendas_lista' %}">Fazendas</a> |
-      <a href="{% url 'rumix:leiloes_lista' %}">Leilões</a> |
-      <a href="{% url 'rumix:perfil' %}">Perfil</a> |
-      <a href="{% url 'rumix:sobre' %}">Sobre</a>
-      <a href="{% url 'rumix:login_cadastro' %}">
-    <img src="{% static 'images/user.png' %}" alt="Login" style="height:25px; vertical-align:middle;">
+<body class="d-flex flex-column min-vh-100">
+
+<header>
+  <nav class="navbar cima">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a class="brand" href="{% url 'rumix:index' %}">
+        <span class="logo">R</span> <!--colocar logo-->
+        <span class="title">Rumix</span>
       </a>
-    </nav>
-  </header>
 
-  <main>
+      <div class="collapse d-lg-block" id="navegacao">
+        <ul class="nav align-items-center">
+          <li class="nav-item"><a class="nav-link" href="{% url 'rumix:index' %}"></i> Início</a></li> <!--nao colocar icone aqui é onde inicia a pagina-->
+          <li class="nav-item"><a class="nav-link" href="{% url 'rumix:feed_lista' %}"><i class="fa-solid fa-house"></i> Feed</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'rumix:animais_lista' %}"><i class="fa-solid fa-cow"></i> Animais</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'rumix:fazendas_lista' %}"><i class="fa-solid fa-tractor"></i> Fazendas</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'rumix:leiloes_lista' %}"><i class="fa-solid fa-comments-dollar"></i> Leilões</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'rumix:sobre' %}"><i class="fa-solid fa-hand-point-up"></i> Sobre</a></li>
+
+          <li class="nav-item dropdown ms-2">
+            <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-bs-toggle="dropdown">
+              <i class="fa-solid fa-user"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menu login">
+              {% if user.is_authenticated %}
+                <li><a class="dropdown-item" href="{% url 'rumix:perfil' %}">Perfil</a></li>
+                <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
+              {% else %}
+                <li><a class="dropdown-item" href="/admin/login/">Entrar</a></li> <!--mandar para pagina de login quando tiver feita-->
+                <li><a class="dropdown-item" href="/admin/">Criar conta</a></li> <!--mandar para pagina de login quando tiver feita-->
+              {% endif %}
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="flex-fill">
+  <div class="container py-4">
     {% block content %}{% endblock %}
-  </main>
+  </div>
+</main>
 
-  <footer>
-    <p>© 2025 Rumix — Rede Rural</p>
-  </footer>
+<footer class="footer mt-auto">
+  <div class="container d-flex justify-content-between py-3">
+    <div>Rumix</div>
+    <div class="texto detalhe"><p><small>Feito por JP, MF, GS</small></p></div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@ from django.contrib.auth import views as auth_views
 app_name = "rumix"
 
 urlpatterns = [
-    path("", views.inicio, name="index"),             # <- nome "index"
+    path("", views.inicio, name="index"),   
     path("feed/", views.feed_lista, name="feed_lista"),
     path("feed/<int:id>/", views.feed_detalhe, name="feed_detalhe"),
     path("animais/", views.animais_lista, name="animais_lista"),

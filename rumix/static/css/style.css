@@ -1,116 +1,62 @@
-/* =========================
-   Variáveis de cores
-========================= */
-:root {
-  --cor-fundo: #5a8f7b;
-  --cor-texto: #1a1a1a;
-  --cor-principal: #01441b;
-  --cor-link: #ffffff;
-  --cor-link-hover: #ffd700;  
-  --radius: 8px;               
+
+:root{
+  --verde-1: #3c8f13;
+  --verde-2: #10573e;
+  --bg: #f6faf6;
+  --text: #123824;
+  --muted: #617066;
+  --radius: 8px;
 }
 
-/* =========================
-   Reset básico
-========================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
 }
 
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: var(--cor-fundo);
-  color: var(--cor-texto);
-  line-height: 1.6;
+/* header */
+.navbar{
+  background: linear-gradient(90deg, var(--verde-2), var(--verde-1));
+  color: white;
 }
-
-/* =========================
-   Header e navegação
-========================= */
-header nav {
-  background-color: var(--cor-principal);
-  padding: 15px 20px;
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  align-items: center;
-  flex-wrap: wrap;
+.brand { display:flex; align-items:center; text-decoration:none; color:white; }
+.logo{
+  width:40px; height:40px; border-radius:6px;
+  background: #3c8f13; display:inline-flex; align-items:center; justify-content:center;
+  color:white; font-weight:700; margin-right:8px;
+  font-family: serif;
 }
+.title{ font-weight:700; }
 
-header nav a {
-  color: var(--cor-link);
-  text-decoration: none;
-  font-weight: bold;
-  padding: 5px 10px;
-  transition: color 0.3s, background 0.3s;
+/* nav redirecionamento */
+.nav-link{
+  color: #f8fff8 !important;
+  margin-right: 8px;
+  font-weight:600;
+  padding:6px 8px;
+  border-radius:6px;
+}
+.nav-link:hover{ background: rgba(255,255,255,0.06); color:#fff !important; }
+
+/*  container principal */
+.container{ max-width:1100px; }
+
+/* cards de inicio */
+.panel{
+  background: white;
+  padding:16px;
   border-radius: var(--radius);
+  box-shadow: 0 8px 20px rgba(10,30,20,0.05);
 }
 
-header nav a:hover {
-  color: var(--cor-principal);
-  background-color: var(--cor-link-hover);
+/* footer */
+.footer{
+  background: linear-gradient(90deg, var(--verde-2), var(--verde-1));
+  color: white;
 }
 
-header nav img {
-  height: 85px;
-  width: auto;
-  vertical-align: middle;
-}
-
-/* =========================
-   Main
-========================= */
-main {
-  padding: 40px 20px 140px; /* deixa espaço para o footer fixo */
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* =========================
-   Container de conteúdo
-========================= */
-.container {
-  text-align: center;
-  padding: 20px;
-  background-color: #ffffffaa; /* leve transparência */
-  border-radius: var(--radius);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  margin-bottom: 30px;
-}
-
-.container img {
-  margin-top: 20px;
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-/* =========================
-   Footer
-========================= */
-footer {
-  background-color: var(--cor-principal);
-  color: var(--cor-link);
-  text-align: center;
-  padding: 15px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  font-size: 0.9rem;
-}
-
-/* =========================
-   Links internos
-========================= */
-a {
-  color: var(--cor-principal);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-a:hover {
-  color: var(--cor-link-hover);
+/* ajustes de tela*/
+@media (max-width:768px){
+  .nav-link{ display:block; margin:6px 0; }
+  .navbar .collapse { width:100%; }
 }
