@@ -17,6 +17,6 @@ urlpatterns = [
     path("leiloes/<int:id>/", views.leilao_detalhe, name="leilao_detalhe"),
     path("perfil/", views.perfil, name="perfil"),
     path("sobre/", views.sobre, name="sobre"),
-    path('login/', views.login_cadastro, name='login_cadastro'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+    path("signup/", views.signup_view, name="signup"),
+    path("login/", views.login_view, name="login"),
 ]

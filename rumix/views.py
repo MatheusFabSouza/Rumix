@@ -1,9 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login, login as auth_login, authenticate, logout as auth_logout
 from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, authenticate
 
 def inicio(request):
     context = {
@@ -79,17 +78,43 @@ def login_cadastro(request):
                 login(request, user)
                 return redirect('rumix:perfil')
             else:
-                messages.error(request, "Login inválido")
+                messages.error(request, "Login invalido, tente noamnete.")
         elif "cadastro" in request.POST:
             cadastro_form = UserCreationForm(request.POST)
             if cadastro_form.is_valid():
                 cadastro_form.save()
-                messages.success(request, "Conta criada com sucesso! Faça login.")
+                messages.success(request, "Conta registrada, por favor, faca login.")
                 return redirect('rumix:login_cadastro')
             else:
-                messages.error(request, "Erro ao criar conta. Verifique os dados.")
+                messages.error(request, "Erro ao criar conta.")
 
     return render(request, "rumix/login_cadastro.html", {
         "cadastro_form": cadastro_form,
         "login_form": login_form
     })
+def signup_view(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()               # salva o usuario
+            auth_login(request, user)        # loga o usuario
+            return redirect("rumix:index")
+    else:
+        form = UserCreationForm()
+    return render(request, "rumix/signup.html", {"form": form})
+
+# view de login
+def login_view(request):
+    # se já está logado vai redireciona
+    if request.user.is_authenticated:
+        return redirect("rumix:index")
+
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            auth_login(request, user)
+            return redirect("rumix:index")
+    else:
+        form = AuthenticationForm()
+    return render(request, "rumix/login.html", {"form": form})

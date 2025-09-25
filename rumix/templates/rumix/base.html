@@ -34,13 +34,13 @@
               <i class="fa-solid fa-user"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menu login">
-              {% if user.is_authenticated %}
-                <li><a class="dropdown-item" href="{% url 'rumix:perfil' %}">Perfil</a></li>
-                <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
-              {% else %}
-                <li><a class="dropdown-item" href="/admin/login/">Entrar</a></li> <!--mandar para pagina de login quando tiver feita-->
-                <li><a class="dropdown-item" href="/admin/">Criar conta</a></li> <!--mandar para pagina de login quando tiver feita-->
-              {% endif %}
+                {% if user.is_authenticated %}
+                  <li><a class="dropdown-item" href="{% url 'rumix:perfil' %}">Perfil</a></li>
+                  <li><a class="dropdown-item" href="{% url 'rumix:logout' %}">Sair</a></li>
+                {% else %}
+                  <li><a class="dropdown-item" href="{% url 'rumix:login' %}">Entrar</a></li>
+                  <li><a class="dropdown-item" href="{% url 'rumix:signup' %}">Criar conta</a></li>
+                {% endif %}
             </ul>
           </li>
         </ul>
