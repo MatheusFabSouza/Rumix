@@ -14,7 +14,7 @@
 
 <header>
   <nav class="navbar cima">
-    <div class="container d-flex align-items-center justify-content-between">
+    <div class="container-fluid col-10 d-flex align-items-center justify-content-between">
       <a class="brand" href="{% url 'rumix:index' %}">
         <span class="logo">R</span> <!--colocar logo-->
         <span class="title">Rumix</span>
@@ -50,7 +50,7 @@
 </header>
 
 <main class="flex-fill">
-  <div class="container py-4">
+  <div class="container-fluid col-10 py-4">
     {% block content %}{% endblock %}
   </div>
 </main>
