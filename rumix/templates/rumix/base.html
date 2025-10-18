@@ -16,31 +16,29 @@
   <nav class="navbar cima">
     <div class="container-fluid col-10 d-flex align-items-center justify-content-between">
       <a class="brand" href="{% url 'rumix:index' %}">
-        <span class="logo">R</span> <!--colocar logo-->
+        <span class="logo">R</span>
         <span class="title">Rumix</span>
       </a>
 
       <div class="collapse d-lg-block" id="navegacao">
         <ul class="nav align-items-center">
-          <li class="nav-item"><a class="nav-link" href="{% url 'rumix:index' %}"></i> Início</a></li> <!--nao colocar icone aqui é onde inicia a pagina-->
-          <li class="nav-item"><a class="nav-link" href="{% url 'rumix:feed_lista' %}"><i class="fa-solid fa-house"></i> Feed</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'rumix:animais_lista' %}"><i class="fa-solid fa-cow"></i> Animais</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'rumix:fazendas_lista' %}"><i class="fa-solid fa-tractor"></i> Fazendas</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'rumix:leiloes_lista' %}"><i class="fa-solid fa-comments-dollar"></i> Leilões</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'rumix:sobre' %}"><i class="fa-solid fa-hand-point-up"></i> Sobre</a></li>
+          <li><a href="{% url 'rumix:index' %}">Início</a></li>
+          <li><a href="{% url 'animais:lista' %}">Animais</a></li>
+          <li><a href="{% url 'fazendas:lista' %}">Fazendas</a></li>
+          <li><a href="{% url 'rumix:sobre' %}">Sobre</a></li>
 
           <li class="nav-item dropdown ms-2">
             <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-bs-toggle="dropdown">
               <i class="fa-solid fa-user"></i>
             </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="menu login">
-                {% if user.is_authenticated %}
-                  <li><a class="dropdown-item" href="{% url 'rumix:perfil' %}">Perfil</a></li>
-                  <li><a class="dropdown-item" href="{% url 'rumix:logout' %}">Sair</a></li>
-                {% else %}
-                  <li><a class="dropdown-item" href="{% url 'rumix:login' %}">Entrar</a></li>
-                  <li><a class="dropdown-item" href="{% url 'rumix:signup' %}">Criar conta</a></li>
-                {% endif %}
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+              {% if user.is_authenticated %}
+                <li><a class="dropdown-item" href="{% url 'rumix:perfil' %}">Perfil</a></li>
+                <li><a class="dropdown-item" href="{% url 'rumix:logout' %}">Sair</a></li>
+              {% else %}
+                <li><a class="dropdown-item" href="{% url 'rumix:login' %}">Entrar</a></li>
+                <li><a class="dropdown-item" href="{% url 'rumix:cadastro' %}">Criar conta</a></li>
+              {% endif %}
             </ul>
           </li>
         </ul>

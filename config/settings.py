@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rumix'
+    'rumix',
+    'animais',
+    'fazendas'
 ]
 
 MIDDLEWARE = [
@@ -118,7 +120,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 import os
 
-
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 # Default primary key field type

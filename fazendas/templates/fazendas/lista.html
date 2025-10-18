@@ -1,0 +1,15 @@
+{% extends "rumix/base.html" %}
+{% block title %}Fazendas - Rumix{% endblock %}
+
+{% block content %}
+<h1>{{ titulo }}</h1>
+<ul>
+  {% for fazenda in object_list %}
+    <li>
+      <a href="{% url 'fazendas:detalhe' fazenda.pk %}">{{ fazenda.nome_fazenda }}</a>
+    </li>
+  {% empty %}
+    <li>Nenhuma fazenda cadastrada.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

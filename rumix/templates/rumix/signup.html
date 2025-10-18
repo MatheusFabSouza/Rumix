@@ -1,16 +1,13 @@
 {% extends "rumix/base.html" %}
 {% block title %}Criar conta — Rumix{% endblock %}
-
 {% block content %}
   <div class="panel mx-auto" style="max-width:420px;">
     <h3 class="mb-3">Criar conta</h3>
-
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
       <button type="submit" class="btn btn-success">Criar conta</button>
     </form>
-
     <hr>
     <p class="small">Já tem conta? <a href="{% url 'rumix:login' %}">Entrar</a></p>
   </div>

@@ -1,4 +1,5 @@
 {% load static %}
+{% block title%}Login - Rumix{%endblock%%}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,23 +16,19 @@
 <body>
 <div class="form-container">
     <h2>Rumix</h2>
-
     <form method="post" class="active" id="loginForm">
         {% csrf_token %}
         {{ login_form.as_p }}
         <button type="submit" name="login">Login</button>
         <p>Não tem conta? <span class="toggle-btn" onclick="toggleForm()">Crie aqui</span></p>
     </form>
-
     <form method="post" id="cadastroForm">
         {% csrf_token %}
         {{ cadastro_form.as_p }}
         <button type="submit" name="cadastro">Criar Conta</button>
         <p>Já tem conta? <span class="toggle-btn" onclick="toggleForm()">Faça login</span></p>
     </form>
-
 </div>
-
 <script>
 function toggleForm() {
     const login = document.getElementById('loginForm');

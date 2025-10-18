@@ -9,38 +9,26 @@
     <div class="row align-items-center">
       <div class="col-md-7">
         <h1>Rumix — a rede do meio rural</h1>
-        <p class="lead">Compartilhe fotos, gerencie animais e fazendas, compre e participe de leilões. Conecte-se com produtores e interessados no campo.</p>
-
+        <p class="lead">Gerencie animais e fazendas, compartilhe fotos de seus animais e fazendas.</p>
         <div class="mt-4">
-          <a href="{% url 'rumix:feed_lista' %}" class="btn btn-rumix me-2">Ver Feed</a>
-          <a href="{% url 'rumix:animais_lista' %}" class="btn btn-rumix-outline">Meus animais</a>
+          <a href="{% url 'animais:lista' %}" class="btn btn-rumix me-2">Ver Animais</a>
+          <a href="{% url 'fazendas:lista' %}" class="btn btn-rumix-outline">Minhas Fazendas</a>
         </div>
       </div>
-
       <div class="col-md-5 text-center d-none d-md-block">
         <img src="{% static 'images/hero-farm.jpg' %}" alt="Fazenda" class="img-fluid rounded-3 shadow" style="max-height:220px; object-fit:cover;">
       </div>
     </div>
   </div>
 
-  <!-- FEATURES CARDS -->
+  <!-- FEATURES -->
   <div class="row g-3">
     <div class="col-md-4">
       <div class="feature-card">
-        <h5>Feed</h5>
-        <p class="mb-0 text-muted">Publique fotos e atualizações. Veja o que outros produtores compartilham.</p>
-        <div>
-          <a href="{% url 'rumix:feed_lista' %}" class="btn btn-rumix">Ir para Feed</a> <!--adicionar botao para destqaue-->
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="feature-card">
         <h5>Animais</h5>
-        <p class="mb-0 text-muted">Cadastre, fotografe e acompanhe o rebanho com informações básicas.</p>
+        <p class="mb-0 text-muted">Cadastre, fotografe e acompanhe seu rebanho com informações básicas.</p>
         <div>
-          <a href="{% url 'rumix:animais_lista' %}" class="btn btn-rumix">Ir para Animais</a> <!--adicionar botao para destqaue-->
+          <a href="{% url 'animais:lista' %}" class="btn btn-rumix">Ir para Animais</a>
         </div>
       </div>
     </div>
@@ -48,29 +36,9 @@
     <div class="col-md-4">
       <div class="feature-card">
         <h5>Fazendas</h5>
-        <p class="mb-0 text-muted">Gerencie suas propriedades, áreas e informações de terra.</p>
+        <p class="mb-0 text-muted">Gerencie suas propriedades e informações da terra.</p>
         <div>
-          <a href="{% url 'rumix:fazendas_lista' %}" class="btn btn-rumix">Ir para Fazenda</a> <!--adicionar botao para destqaue-->
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="feature-card">
-        <h5>Leilões</h5>
-        <p class="mb-0 text-muted">Pense em leilões simples: anúncios, datas e lances.</p>
-        <div>
-          <a href="{% url 'rumix:leiloes_lista' %}" class="btn btn-rumix">Ir para Leilões</a> <!--adicionar botao para destqaue-->
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="feature-card">
-        <h5>Perfil</h5>
-        <p class="mb-0 text-muted">Controle seu perfil público, contatos e preferências.</p>
-        <div>
-          <a href="{% url 'rumix:perfil' %}" class="btn btn-rumix">Ir para Perfil</a> <!--adicionar botao para destqaue-->
+          <a href="{% url 'fazendas:lista' %}" class="btn btn-rumix">Ir para Fazendas</a>
         </div>
       </div>
     </div>
@@ -80,7 +48,7 @@
         <h5>Sobre</h5>
         <p class="mb-0 text-muted">Saiba quem somos e a missão do Rumix.</p>
         <div>
-          <a href="{% url 'rumix:sobre' %}" class="btn btn-rumix">Ir para Sobre</a> <!--adicionar botao para destqaue-->
+          <a href="{% url 'rumix:sobre' %}" class="btn btn-rumix">Ir para Sobre</a>
         </div>
       </div>
     </div>

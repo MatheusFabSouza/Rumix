@@ -1,0 +1,17 @@
+{# animais/templates/animais/confirmar_exclusao.html
+   Apenas se preferir template separado para confirmar exclusão.
+   Espera "object" (animal) no contexto.
+#}
+{% extends "rumix/base.html" %}
+{% block title %}Excluir {{ object.nome_animal }} — Rumix{% endblock %}
+
+{% block content %}
+  <h1>Excluir {{ object.nome_animal }}</h1>
+  <p>Tem certeza que deseja excluir este animal?</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Sim, excluir</button>
+    <a href="{% url 'animais:detalhe' object.pk %}" class="btn btn-outline-secondary ms-2">Cancelar</a>
+  </form>
+{% endblock %}
