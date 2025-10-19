@@ -1,67 +1,62 @@
 {% extends "rumix/base.html" %}
-{% load static %}
-
 {% block title %}Início - Rumix{% endblock %}
-
+{% load static %}
+{% load crispy_forms_filters %}
 {% block content %}
-  <!-- HERO -->
-  <div class="rumix-hero mb-4">
-    <div class="row align-items-center">
-      <div class="col-md-7">
-        <h1>Rumix — a rede do meio rural</h1>
-        <p class="lead">Gerencie animais e fazendas, compartilhe fotos de seus animais e fazendas.</p>
-        <div class="mt-4">
-          <a href="{% url 'animais:lista' %}" class="btn btn-rumix me-2">Ver Animais</a>
-          <a href="{% url 'fazendas:lista' %}" class="btn btn-rumix-outline">Minhas Fazendas</a>
-        </div>
+<div class="p-5 bg-white rounded shadow-sm mb-5 text-center text-md-start">
+  <div class="row align-items-center">
+    <div class="col-md-7">
+      <h1 class="display-5 fw-bold">Rumix — a rede do meio rural</h1>
+      <p class="lead text-muted">Gerencie animais e fazendas, compartilhe fotos de seus animais e fazendas.</p>
+      <div class="mt-4">
+        <a href="{% url 'animais:lista' %}" class="btn btn-success btn-lg me-2">Ver Animais</a>
+        <a href="{% url 'fazendas:lista' %}" class="btn btn-outline-success btn-lg">Minhas Fazendas</a>
       </div>
-      <div class="col-md-5 text-center d-none d-md-block">
-        <img src="{% static 'images/hero-farm.jpg' %}" alt="Fazenda" class="img-fluid rounded-3 shadow" style="max-height:220px; object-fit:cover;">
+    </div>
+    <div class="col-md-5 mt-4 mt-md-0 text-center">
+      <img src="{% static 'images/hero-farm.jpg' %}" alt="Fazenda" class="img-fluid rounded shadow" style="max-height:250px; object-fit:cover;">
+    </div>
+  </div>
+</div>
+<div class="row g-4 text-center mb-5">
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm border-0">
+      <div class="card-body">
+        <i class="fa-solid fa-cow fa-2x mb-3 text-success"></i>
+        <h5 class="card-title">Animais</h5>
+        <p class="card-text text-muted">Cadastre, fotografe e acompanhe seu rebanho com informações básicas.</p>
+        <a href="{% url 'animais:lista' %}" class="btn btn-success">Ir para Animais</a>
       </div>
     </div>
   </div>
-
-  <!-- FEATURES -->
-  <div class="row g-3">
-    <div class="col-md-4">
-      <div class="feature-card">
-        <h5>Animais</h5>
-        <p class="mb-0 text-muted">Cadastre, fotografe e acompanhe seu rebanho com informações básicas.</p>
-        <div>
-          <a href="{% url 'animais:lista' %}" class="btn btn-rumix">Ir para Animais</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="feature-card">
-        <h5>Fazendas</h5>
-        <p class="mb-0 text-muted">Gerencie suas propriedades e informações da terra.</p>
-        <div>
-          <a href="{% url 'fazendas:lista' %}" class="btn btn-rumix">Ir para Fazendas</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="feature-card">
-        <h5>Sobre</h5>
-        <p class="mb-0 text-muted">Saiba quem somos e a missão do Rumix.</p>
-        <div>
-          <a href="{% url 'rumix:sobre' %}" class="btn btn-rumix">Ir para Sobre</a>
-        </div>
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm border-0">
+      <div class="card-body">
+        <i class="fa-solid fa-tractor fa-2x mb-3 text-success"></i>
+        <h5 class="card-title">Fazendas</h5>
+        <p class="card-text text-muted">Gerencie suas propriedades e informações da terra.</p>
+        <a href="{% url 'fazendas:lista' %}" class="btn btn-success">Ir para Fazendas</a>
       </div>
     </div>
   </div>
-
-  <!-- CTA -->
-  <div class="panel mt-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
-    <div>
-      <h5 class="mb-1">Pronto para começar?</h5>
-      <p class="mb-0 text-muted">Crie sua conta, faça login e aproveite as funções do Rumix!</p>
-    </div>
-    <div>
-      <a href="{% url 'rumix:login' %}" class="btn btn-rumix">Ir para Login</a>
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm border-0">
+      <div class="card-body">
+        <i class="fa-solid fa-handshake fa-2x mb-3 text-success"></i>
+        <h5 class="card-title">Sobre</h5>
+        <p class="card-text text-muted">Saiba quem somos e a missão do Rumix.</p>
+        <a href="{% url 'rumix:sobre' %}" class="btn btn-success">Ir para Sobre</a>
+      </div>
     </div>
   </div>
+</div>
+<div class="p-4 bg-white rounded shadow d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+  <div>
+    <h5 class="mb-1 fw-bold">Pronto para começar?</h5>
+    <p class="mb-0 text-muted">Crie sua conta, faça login e aproveite as funções do Rumix!</p>
+  </div>
+  <div>
+    <a href="{% url 'rumix:login' %}" class="btn btn-success btn-lg">Ir para Login</a>
+  </div>
+</div>
 {% endblock %}

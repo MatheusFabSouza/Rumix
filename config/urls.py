@@ -7,7 +7,6 @@ urlpatterns = [
     path('animais/', include(('animais.urls', 'animais'), namespace='animais')),
     path('fazendas/', include(('fazendas.urls', 'fazendas'), namespace='fazendas')),
     path('', include(('rumix.urls', 'rumix'), namespace='rumix')),
-
 ]
 
 if settings.DEBUG:

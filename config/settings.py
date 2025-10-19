@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rumix',
     'animais',
-    'fazendas'
+    'fazendas',
+    'crispy_forms',
+    'crispy_bootstrap5'
 ]
 
 MIDDLEWARE = [
@@ -120,6 +122,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 import os
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 MEDIA_URL = "media/"

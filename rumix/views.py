@@ -3,17 +3,9 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.contrib import messages
 
-
-# -------------------------
-# INÍCIO
-# -------------------------
 def inicio(request):
     return render(request, 'rumix/index.html', {'titulo': 'Rumix'})
 
-
-# -------------------------
-# AUTENTICAÇÃO
-# -------------------------
 def cadastro(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -52,26 +44,17 @@ def login_view(request):
         'mode': 'login'
     })
 
-
 def logout_view(request):
     auth_logout(request)
     messages.info(request, "Você saiu da conta.")
     return redirect('rumix:index')
 
-
-# -------------------------
-# PERFIL
-# -------------------------
 def perfil(request):
     return render(request, 'rumix/perfil.html', {
         'titulo': f'Perfil — {request.user.username if request.user.is_authenticated else "Visitante"}',
         'usuario': request.user,
     })
 
-
-# -------------------------
-# SOBRE
-# -------------------------
 def sobre(request):
     return render(request, 'rumix/sobre.html', {
         "titulo": "Sobre",
