@@ -18,9 +18,10 @@ body {
   background: linear-gradient(90deg, var(--verde-2), var(--verde-1));
 }
 .brand .logo {
-  width: 40px; height: 40px; border-radius: 6px;
-  background: var(--verde-1); display: flex; justify-content: center; align-items: center;
-  color: #fff; font-weight: 700; font-family: serif;
+  width: 30px;
+    height: 30px;
+    border-radius: 50%;   
+    object-fit: cover;      
 }
 
 /* Links */
@@ -32,3 +33,39 @@ body {
   padding: 6px 8px;
 }
 
+.dropdown-menu {
+  background: linear-gradient(90deg, var(--verde-2), var(--verde-1)) !important;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+}
+
+.dropdown-menu .dropdown-item {
+  color: #fff;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.contato {
+  background: var(--bg);
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.contato h2 {
+  color: var(--verde-2);
+  margin-bottom: 10px;
+}
+
+.contato a {
+  color: var(--verde-1);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contato a:hover {
+  text-decoration: underline;
+}

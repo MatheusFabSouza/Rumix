@@ -122,6 +122,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 import os
 
+STATICFILES_DIRS = [BASE_DIR / 'static']
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 LOGIN_URL = '/login/'
