@@ -1,34 +1,35 @@
+{% extends "rumix/base.html" %}
 {% load static %}
-{% block title%}Login - Rumix{%endblock%%}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<title>Rumix - Login/Cadastro</title>
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-<style>
-    .form-container { max-width: 400px; margin: 50px auto; padding: 20px; background: #01441b; color: #fff; border-radius: 8px; }
-    .form-container form { display: none; }
-    .form-container form.active { display: block; }
-    .toggle-btn { cursor: pointer; color: #ffcc00; text-decoration: underline; }
-</style>
-</head>
-<body>
-<div class="form-container">
-    <h2>Rumix</h2>
-    <form method="post" class="active" id="loginForm">
-        {% csrf_token %}
-        {{ login_form.as_p }}
-        <button type="submit" name="login">Login</button>
-        <p>Não tem conta? <span class="toggle-btn" onclick="toggleForm()">Crie aqui</span></p>
-    </form>
-    <form method="post" id="cadastroForm">
-        {% csrf_token %}
-        {{ cadastro_form.as_p }}
-        <button type="submit" name="cadastro">Criar Conta</button>
-        <p>Já tem conta? <span class="toggle-btn" onclick="toggleForm()">Faça login</span></p>
-    </form>
-</div>
+{% load crispy_forms_tags %}
+
+{% block title %}Login - Rumix{% endblock %}
+
+{% block content %}
+<section class="login-cadastro">
+    <div class="form-card">
+        <h2 class="site-title">Rumix</h2>
+
+        <form method="post" id="loginCadastroForm">
+            {% csrf_token %}
+            
+            <div id="formsContainer">
+                <div id="loginForm" class="form-section active">
+                    {{ login_form|crispy }}
+                </div>
+                <div id="cadastroForm" class="form-section">
+                    {{ cadastro_form|crispy }}
+                </div>
+            </div>
+
+            
+            <div class="d-flex gap-2 mt-3">
+                <button type="submit" name="login" class="btn-submit flex-fill">Login</button>
+                <button type="submit" name="cadastro" class="btn-submit flex-fill">Criar Conta</button>
+            </div>
+        </form>
+    </div>
+</section>
+
 <script>
 function toggleForm() {
     const login = document.getElementById('loginForm');
@@ -37,5 +38,4 @@ function toggleForm() {
     cadastro.classList.toggle('active');
 }
 </script>
-</body>
-</html>
+{% endblock %}

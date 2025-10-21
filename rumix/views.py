@@ -58,5 +58,4 @@ def perfil(request):
 def sobre(request):
     return render(request, 'rumix/sobre.html', {
         "titulo": "Sobre",
-        "descricao": "Rumix é uma plataforma para conectar agricultores e interessados no meio rural. Criada por Gabriel Sinedino, João Paulo e Matheus Fabricio.",
-    })
+        })

@@ -33,6 +33,7 @@ body {
   padding: 6px 8px;
 }
 
+/*tabela Login e Cadastro*/
 .dropdown-menu {
   background: linear-gradient(90deg, var(--verde-2), var(--verde-1)) !important;
   color: #fff;
@@ -48,6 +49,7 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+/*contatos*/
 .contato {
   background: var(--bg);
   padding: 20px;
@@ -68,4 +70,40 @@ body {
 
 .contato a:hover {
   text-decoration: underline;
+}
+
+/*forms*/
+.form-card {
+  background: linear-gradient(90deg, var(--verde-2), var(--verde-1));
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  max-width: 400px;
+  margin: 4rem auto;
+  color: #fff;
+  text-align: center;
+}
+
+.btn-submit {
+  padding: 0.7rem;
+  border: none;
+  border-radius: var(--radius);
+  background-color: #ffcc00;
+  color: #123824;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #e6b800;
+}
+
+.d-flex.gap-2 {
+  display: flex;
+  gap: 1rem;
+}
+
+.flex-fill {
+  flex: 1;
 }
