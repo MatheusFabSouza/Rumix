@@ -4,10 +4,12 @@ from django.contrib.auth.decorators import login_required
 from .models import Fazenda
 from .forms import FazendaForm
 
+@login_required(login_url='usuarios:login')
 def lista(request):
     fazendas = Fazenda.objects.all().order_by('-id')
     return render(request, 'fazendas/lista.html', {'fazendas': fazendas})
 
+@login_required(login_url='usuarios:login')
 def detalhe(request, id):
     fazenda = get_object_or_404(Fazenda, id=id)
     return render(request, 'fazendas/detalhe.html', {'fazenda': fazenda})
