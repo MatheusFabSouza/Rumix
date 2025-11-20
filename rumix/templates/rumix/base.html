@@ -37,8 +37,11 @@
                 <li><a class="dropdown-item" href="{% url 'rumix:perfil' %}">Perfil</a></li>
                 <li><a class="dropdown-item" href="{% url 'rumix:logout' %}">Sair</a></li>
               {% else %}
-                <li><a class="dropdown-item" href="{% url 'rumix:login' %}">Entrar</a></li>
-                <li><a class="dropdown-item" href="{% url 'rumix:cadastro' %}">Criar conta</a></li>
+                <a class="dropdown-item" href="{% url 'usuarios:login' %}">Entrar</a>
+                <a class="dropdown-item" href="{% url 'usuarios:register' %}">Criar conta</a>
+              {% endif %}
+              {% if user.is_authenticated and user.is_superuser %}
+                <li><a class="dropdown-item" href="{% url 'usuarios:usuarios' %}">Gerenciar Usuarios</a></li>
               {% endif %}
             </ul>
           </li>

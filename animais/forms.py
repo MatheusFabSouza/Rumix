@@ -6,5 +6,5 @@ class AnimalForm(forms.ModelForm):
         model = Animal
         fields = '__all__'
         widgets = {
-            'observacao_animal': forms.Textarea(attrs={'rows':3}),
+            'observacao_animal': forms.Textarea(), 
         }

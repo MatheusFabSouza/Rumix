@@ -1,0 +1,29 @@
+{% extends "rumix/base.html" %}
+{% load static %}
+{% block title %}Usuarios | Rumix{% endblock %}
+{% block content %}
+<h1>Usuarios</h1>
+<a href="{% url 'usuarios:usuarios_novo' %}" class="btn btn-success mb-3">Novo usuario</a>
+<table class="table">
+  <thead>
+    <tr><th>ID</th><th>Username</th><th>Nome</th><th>Email</th><th>Ações</th></tr>
+  </thead>
+  <tbody>
+    {% for u in usuarios %}
+    <tr>
+      <td>{{ u.id }}</td>
+      <td>{{ u.username }}</td>
+      <td>{{ u.get_full_name }}</td>
+      <td>{{ u.email }}</td>
+      <td>
+        <a class="btn btn-sm btn-primary" href="{% url 'usuarios:usuarios_detalhar' u.id %}">Ver</a>
+        <a class="btn btn-sm btn-warning" href="{% url 'usuarios:usuarios_editar' u.id %}">Editar</a>
+        <a class="btn btn-sm btn-danger" href="{% url 'usuarios:usuarios_remover' u.id %}">Remover</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">Nenhum usuario.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

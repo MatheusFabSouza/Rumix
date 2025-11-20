@@ -1,0 +1,11 @@
+{% extends "rumix/base.html" %}
+{% block title %}Remover Usuario | Rumix{% endblock %}
+{% block content %}
+<h1>Remover {{ object.get_full_name|default:object.username }}</h1>
+<p>Tem certeza?</p>
+<form method="post">
+  {% csrf_token %}
+  <button class="btn btn-danger">Sim, remover</button>
+  <a href="{% url 'usuarios:usuarios' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

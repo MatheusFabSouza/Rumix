@@ -4,5 +4,4 @@ from .models import Fazenda
 class FazendaForm(forms.ModelForm):
     class Meta:
         model = Fazenda
-        fields = '__all__'
-        widgets = {'sobre_fazenda': forms.Textarea(attrs={'rows':3})}
+        fields = ['nome_fazenda', 'foto_fazenda', 'sobre_fazenda']

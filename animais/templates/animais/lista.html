@@ -1,6 +1,6 @@
 {% extends "rumix/base.html" %}
 {% load crispy_forms_filters %}
-{% block title %}Animais — Rumix{% endblock %}
+{% block title %}Animais | Rumix{% endblock %}
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h1>Animais</h1>
@@ -14,11 +14,15 @@
           {% if animal.foto_animal %}
             <img src="{{ animal.foto_animal.url }}" class="card-img-top" alt="{{ animal.nome_animal }}">
           {% endif %}
+          <div class="card h-100">
+            {% if animal.vacina_animal %}
+              <img src="{{ animal.vacina_animal.url }}" class="card-img-top" alt="Vacina de {{ animal.nome_animal }}">
+            {% endif %}
           <div class="card-body">
             <h5 class="card-title">{{ animal.nome_animal }}</h5>
             <p class="card-text text-muted">{{ animal.identificacao_animal }}</p>
-            <a href="{% url 'animais:detalhe' animal.pk %}" class="btn btn-sm btn-rumix">Ver</a>
-            <a href="{% url 'animais:editar' animal.pk %}" class="btn btn-sm btn-outline-secondary">Editar</a>
+            <a href="{% url 'animais:detalhe' animal.id %}" class="btn btn-sm btn-rumix">Ver</a>
+            <a href="{% url 'animais:editar' animal.id %}" class="btn btn-sm btn-outline-secondary">Editar</a>
           </div>
         </div>
       </div>

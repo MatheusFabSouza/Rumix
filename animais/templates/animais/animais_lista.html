@@ -1,6 +1,6 @@
 {% extends "rumix/base.html" %}
 {% load crispy_forms_filters %}
-{% block title %}Lista de Animais/Adicionar - Rumix{% endblock %}
+{% block title %}Lista de Animais/Adicionar | Rumix {% endblock %}
 {% block content %}
 <h1>{{ titulo }}</h1>
 <a href="{% url 'animais:cadastrar' %}" class="btn btn-success mb-3">Cadastrar Novo Animal</a>
@@ -20,7 +20,7 @@
       <td>{{ animal.identificacao_animal }}</td>
       <td>{{ animal.nome_animal }}</td>
       <td>{{ animal.especie_animal.nome }}</td>
-      <td>{{ animal.get_genero_animal_display }}</td>
+      <td>{{ animal.get_genero_animal_display }}</td> 
       <td>
         <a href="{% url 'animais:detalhe' animal.id %}" class="btn btn-primary btn-sm">Detalhe</a>
         <a href="{% url 'animais:editar' animal.id %}" class="btn btn-warning btn-sm">Editar</a>
@@ -33,6 +33,6 @@
   </tbody>
 </table>
 <div>
-  <a href="{% url 'rumix:index'%}" class="btn btn-primary btn-sm">Voltar para início</a>
+  <a href="{% url 'rumix:index'%}" class="btn btn-primary btn-sm">Voltar para inicio</a>
 </div>
 {% endblock %}

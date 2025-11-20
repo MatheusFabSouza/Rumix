@@ -18,7 +18,7 @@ class Animal(models.Model):
         OVINO = 'O', 'Ovino'
         EQUINO = 'E', 'Equino'
         OUTRO = 'X', 'Outro'
-    classificacao_animal = models.CharField(max_length=1, choices=Classificacao.choices, default=Classificacao.OUTRO)
+    classificacao_animal = models.CharField(max_length=1, choices=Classificacao.choices, default=Classificacao.BOVINO)
     identificacao_animal = models.CharField(max_length=50, blank=True)
     foto_animal = models.ImageField(upload_to='animais/', blank=True, null=True)
     vacinas_animal = models.ImageField(upload_to='animais/vacinas/', blank=True, null=True)

@@ -1,0 +1,21 @@
+{% extends "rumix/base.html" %}
+{% block title %}{{ fazenda.nome_fazenda }} | Rumix{% endblock %}
+{% block content %}
+  <h1>{{ fazenda.nome_fazenda }}</h1>
+  {% if fazenda.foto_fazenda %}
+    <img src="{{ fazenda.foto_fazenda.url }}" class="img-fluid rounded mb-3" style="max-height:300px; object-fit:cover;">
+  {% endif %}
+  <p>{{ fazenda.sobre_fazenda}}</p>
+
+  {% if confirm_delete %}
+    <form method="post" action="{% url 'fazendas:excluir' fazenda.id %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
+      <a href="{% url 'fazendas:detalhe' fazenda.id %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+  {% else %}
+    <a href="{% url 'fazendas:editar' fazenda.id %}" class="btn btn-primary">Editar</a>
+    <a href="{% url 'fazendas:lista' %}" class="btn btn-outline-secondary">Voltar</a>
+    <a href="{% url 'fazendas:excluir' fazenda.id %}" class="btn btn-danger">Excluir</a>
+  {% endif %}
+{% endblock %}

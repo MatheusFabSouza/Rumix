@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'animais',
     'fazendas',
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
+    'usuarios',
 ]
 
 MIDDLEWARE = [
@@ -125,10 +126,12 @@ import os
 STATICFILES_DIRS = [BASE_DIR / 'static']
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/'
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
+LOGIN_URL = 'usuarios:login'
+LOGIN_REDIRECT_URL = "rumix:index"
+LOGOUT_REDIRECT_URL = "rumix:index"
+AUTH_USER_MODEL = "usuarios.Usuario"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
