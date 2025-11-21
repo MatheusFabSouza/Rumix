@@ -1,6 +1,8 @@
 from django.contrib.auth import views as auth_views
 from . import views
 from django.urls import path
+from rumix import views as rumix_views
+
 app_name = 'usuarios'
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
@@ -17,5 +19,6 @@ urlpatterns = [
     path('<int:id>/detalhar/', views.usuarios_detalhar, name='usuarios_detalhar'),
     path('<int:id>/editar/', views.usuarios_editar, name='usuarios_editar'),
     path('<int:id>/remover/', views.usuarios_remover, name='usuarios_remover'),
-
+    path("perfil/", views.perfil, name="perfil"),
+    path("perfil/editar/", views.editar_perfil, name="editar_perfil"),
 ]
