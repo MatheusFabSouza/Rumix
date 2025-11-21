@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from .models import Usuario
 from .forms import UsuarioForm, UsuarioCreationForm
+from .forms import UsuarioUpdateForm
 
 def cadastrar_usuario(request):
     if request.method == "POST":
@@ -82,4 +83,23 @@ def usuarios_remover(request, id):
     return render(request, "usuarios/remover.html", {
         "object": usuario,
         "titulo_pagina": "Remover Usuario",
+    })
+
+@login_required
+def perfil(request):
+    return render(request, "usuarios/perfil.html")
+
+@login_required
+def editar_perfil(request):
+    usuario = request.user
+    if request.method == "POST":
+        form = UsuarioUpdateForm(request.POST, request.FILES, instance=usuario)
+        if form.is_valid():
+            form.save()
+            return redirect("perfil")  # Nome da rota da página de perfil
+    else:
+        form = UsuarioUpdateForm(instance=usuario)
+    return render(request, "usuarios/editar_perfil.html", {
+        "titulo": "Editar Perfil",
+        "form": form
     })

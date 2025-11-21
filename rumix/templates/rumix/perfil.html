@@ -1,10 +1,21 @@
 {% extends "rumix/base.html" %}
-{% load static %}
-{% block title %}Perfil | Rumix{% endblock %}
+
+{% block title %}Meu Perfil | Rumix{% endblock %}
+
 {% block content %}
-  <section style="text-align:center; padding:2rem;">
-    <h1>{{ titulo }}</h1>
-    <p class="lead text-muted">Gerencie suas informações de perfil aqui. Ainda falta fazer isso.</p>
-    <hr style="margin:2rem 0;">  
-  </section>
+<section class="container mt-5" style="max-width:700px;">
+    <h2>Meu Perfil</h2>
+    <hr>
+
+    {% if user.foto_perfil %}
+        <img src="{{ user.foto_perfil.url }}" class="rounded-circle mb-3" width="120">
+    {% endif %}
+
+    <p><strong>Nome:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+
+    <a href="{% url 'usuarios:editar_perfil' %}" class="btn btn-primary mt-3">
+        Editar Perfil
+    </a>
+</section>
 {% endblock %}
