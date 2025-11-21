@@ -1,109 +1,246 @@
+/* -------------------------------- */
+/* PALETA & BASE */
 :root {
-  --verde-1: #3c8f13;
-  --verde-2: #10573e;
-  --bg: #f6faf6;
-  --text: #123824;
-  --muted: #617066;
-  --radius: 8px;
+  --green-deep: #0f3a28;
+  --green-mid: #3d7a4f;
+  --green-soft: #e3f1e9;
+
+  --bg: #f7f9f6;
+  --bg-card: #ffffffcc;
+  --text: #0d251a;
+  --text-light: #4a5b53;
+
+  --radius-uni: 14px 10px 16px 8px;
+  --shadow-soft: 0 8px 24px rgba(15, 58, 40, 0.06);
 }
 
+/* -------------------------------- */
+/* GERAL */
 body {
+  margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.55;
 }
 
-/* Navbar */
+/* NAVBAR */
 .navbar {
-  background: linear-gradient(90deg, var(--verde-2), var(--verde-1));
-}
-.brand .logo {
-  width: 30px;
-    height: 30px;
-    border-radius: 50%;   
-    object-fit: cover;      
+  background: var(--green-deep);
+  padding: 0.8rem 1rem;
+  box-shadow: var(--shadow-soft);
 }
 
-/* Links */
-.nav-link {
-  font-weight: 600;
-  color: #f8fff8 !important;
-  margin-right: 6px;
-  border-radius: 6px;
-  padding: 6px 8px;
+.nav-link { 
+  color: #f0fff7 !important; 
+  font-weight: 600; 
+}
+.nav-link:hover { 
+  background: rgba(255,255,255,0.1); 
 }
 
-/*tabela Login e Cadastro*/
+/* DROPDOWN */
 .dropdown-menu {
-  background: linear-gradient(90deg, var(--verde-2), var(--verde-1)) !important;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
+  background: var(--bg-card) !important;
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-uni);
+}
+.dropdown-item { 
+  color: var(--green-deep); 
+  font-weight: 500; 
+}
+.dropdown-item:hover { 
+  background: rgba(15,58,40,0.08); 
 }
 
-.dropdown-menu .dropdown-item {
-  color: #fff;
-}
-
-.dropdown-menu .dropdown-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/*contatos*/
-.contato {
-  background: var(--bg);
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 20px;
-}
-
-.contato h2 {
-  color: var(--verde-2);
-  margin-bottom: 10px;
-}
-
-.contato a {
-  color: var(--verde-1);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.contato a:hover {
-  text-decoration: underline;
-}
-
-/*forms*/
-.form-card {
-  background: linear-gradient(90deg, var(--verde-2), var(--verde-1));
-  padding: 2rem;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  max-width: 400px;
-  margin: 4rem auto;
-  color: #fff;
+/* CARDS E FORMULÁRIOS */
+.card, .form-card, .card-body form {
+  background: var(--bg-card);
+  border-radius: var(--radius-uni);
+  padding: 2.5rem;
+  max-width: 480px;
+  margin: 2rem auto;
+  color: var(--text);
+  box-shadow: var(--shadow-soft);
   text-align: center;
 }
 
-.btn-submit {
-  padding: 0.7rem;
-  border: none;
-  border-radius: var(--radius);
-  background-color: #ffcc00;
-  color: #123824;
+/* Títulos */
+.form-card h2, .card-title {
+  font-size: 1.5rem;
   font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Inputs e selects */
+.form-card input, .card-body input, textarea, select {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+}
+
+/* Links */
+.card-body a, .card-body .btn-link { font-size: 0.9rem; }
+
+/* BOTÃO DO TEMA */
+.theme-toggle { 
+  background: var(--bg-card); 
+  border: none; 
+  cursor: pointer; 
+  font-size: 1.4rem; 
+  padding: 8px; 
+  border-radius: 50%; 
+  box-shadow: var(--shadow-soft);
+}
+
+/* ------------------------------ */
+/*           BOTÕES PRINCIPAIS     */
+/* ------------------------------ */
+.btn-entrar,
+.btn-criar,
+.btn-rumix,
+.btn-outline-success {
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  min-width: 140px;
+  text-align: center;
+  transition: 0.3s ease;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.btn-submit:hover {
-  background-color: #e6b800;
+/* Modo claro */
+body:not(.dark) .btn-entrar,
+body:not(.dark) .btn-rumix {
+  background-color: #0d6efd; /* azul */
+  color: #fff;
+  border: none;
+}
+body:not(.dark) .btn-entrar:hover,
+body:not(.dark) .btn-rumix:hover {
+  background-color: #0b5ed7;
 }
 
-.d-flex.gap-2 {
-  display: flex;
-  gap: 1rem;
+body:not(.dark) .btn-criar {
+  background-color: #198754; /* verde */
+  color: #fff;
+  border: none;
+}
+body:not(.dark) .btn-criar:hover {
+  background-color: #157347;
 }
 
-.flex-fill {
-  flex: 1;
+/* ------------------------------ */
+/*           DARK MODE             */
+/* ------------------------------ */
+body.dark {
+  --bg: #0b1311;
+  --bg-card: #1c1c1c;
+  --text: #e5f7ed;
+  --text-light: #b7d3c8;
+  --green-deep: #0e2e22;
+  --green-mid: #4ca67a;
+  --shadow-soft: 0 8px 24px rgba(0,0,0,0.35);
+
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* Navbar e Footer */
+body.dark .navbar {
+  background-color: #081b14 !important;
+}
+body.dark footer {
+  background-color: #0f2a20 !important;
+  color: var(--text) !important;
+}
+
+/* Cards e formulários escuros */
+body.dark .form-card,
+body.dark .contato,
+body.dark .card,
+body.dark .bg-white,
+body.dark .p-5,
+body.dark .p-4 {
+  background-color: var(--bg-card) !important;
+  color: var(--text) !important;
+}
+
+/* Textos e títulos escuros */
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6,
+body.dark p,
+body.dark .lead,
+body.dark .text-muted,
+body.dark span,
+body.dark li,
+body.dark a {
+  color: var(--text) !important;
+}
+
+/* Inputs escuros */
+body.dark input,
+body.dark textarea,
+body.dark select {
+  background-color: rgba(255,255,255,0.12) !important;
+  color: var(--text) !important;
+  border-color: rgba(255,255,255,0.18) !important;
+}
+
+/* Tabelas */
+body.dark table,
+body.dark .table {
+  background-color: #1c1c1c !important;
+  color: var(--text) !important;
+}
+body.dark thead {
+  background-color: #222 !important;
+}
+
+/* Botões escuros */
+body.dark .btn-entrar,
+body.dark .btn-rumix {
+  background-color: #0b5ed7; /* azul escuro */
+  color: #e5f7ed;
+}
+body.dark .btn-entrar:hover,
+body.dark .btn-rumix:hover {
+  background-color: #0a53b0;
+}
+
+body.dark .btn-criar {
+  background-color: #157347; /* verde escuro */
+  color: #e5f7ed;
+}
+body.dark .btn-criar:hover {
+  background-color: #0f5c3c;
+}
+
+/* Shadows */
+body.dark .shadow,
+body.dark .shadow-sm {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35) !important;
+}
+
+/* Contêiner geral */
+body.dark .container,
+body.dark main,
+body.dark .row,
+body.dark .col {
+  background-color: transparent !important;
+}
+
+/* Transições suaves */
+* {
+  transition:
+      background-color 0.35s ease,
+      color 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
 }
