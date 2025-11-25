@@ -96,9 +96,10 @@ def editar_perfil(request):
         form = UsuarioUpdateForm(request.POST, request.FILES, instance=usuario)
         if form.is_valid():
             form.save()
-            return redirect("perfil")  # Nome da rota da página de perfil
+            return redirect("usuarios:perfil")  # << CORRETO
     else:
         form = UsuarioUpdateForm(instance=usuario)
+
     return render(request, "usuarios/editar_perfil.html", {
         "titulo": "Editar Perfil",
         "form": form
