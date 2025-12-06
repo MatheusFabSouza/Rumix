@@ -96,10 +96,17 @@ def editar_perfil(request):
         form = UsuarioUpdateForm(request.POST, request.FILES, instance=usuario)
         if form.is_valid():
             form.save()
+<<<<<<< HEAD
             return redirect("usuarios:perfil")  # <- aqui
     else:
         form = UsuarioUpdateForm(instance=usuario)
     
+=======
+            return redirect("usuarios:perfil")  # << CORRETO
+    else:
+        form = UsuarioUpdateForm(instance=usuario)
+
+>>>>>>> 57b213e71e33c2acc0655d7f5a06574a71f593fb
     return render(request, "usuarios/editar_perfil.html", {
         "titulo": "Editar Perfil",
         "form": form
