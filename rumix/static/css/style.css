@@ -53,6 +53,60 @@ body {
   background: rgba(15,58,40,0.08); 
 }
 
+/* PERFIL */
+.perfil-container {
+    max-width: 500px;
+    margin: 50px auto 0;
+}
+
+.perfil-card {
+    background-color: var(--bg-card);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: background-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+body.dark .perfil-card {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+}
+
+.perfil-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 2px solid var(--text-light);
+    transition: border-color 0.35s ease;
+}
+
+.perfil-nome {
+    margin-bottom: 5px;
+    color: var(--text);
+}
+
+.perfil-email {
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+.btn-editar-perfil {
+    text-decoration: none;
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.35s ease;
+}
+
+.btn-editar-perfil:hover {
+    background-color: #0069d9;
+}
+
 /* CARDS E FORMULÁRIOS */
 .card, .form-card, .card-body form {
   background: var(--bg-card);
@@ -234,6 +288,15 @@ body.dark main,
 body.dark .row,
 body.dark .col {
   background-color: transparent !important;
+}
+
+body.dark .btn-editar-perfil {
+    background-color: #0b5ed7;
+    color: var(--text);
+}
+
+body.dark .btn-editar-perfil:hover {
+    background-color: #0a53b0;
 }
 
 /* Transições suaves */

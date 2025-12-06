@@ -1,0 +1,30 @@
+{% extends "rumix/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Editar Perfil | Rumix{% endblock %}
+
+{% block content %}
+<section class="container py-5" style="max-width:500px;">
+
+    <!-- CARD -->
+    <div class="card shadow-sm p-4 form-card">
+
+        <h2 class="card-title text-center mb-4">Editar Perfil</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-criar">
+                    Salvar
+                </button>
+                <a href="{% url 'usuarios:perfil' %}" class="btn btn-outline-secondary ms-2">
+                    Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+
+</section>
+{% endblock %}
