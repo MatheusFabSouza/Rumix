@@ -18,6 +18,20 @@ def cadastrar_usuario(request):
         form = UsuarioCreationForm()
     return render(request, "registration/register.html", {"form": form})
 
+def register(request):
+    if request.method == "POST":
+        form = UsuarioCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Bem Vindo!")
+            return redirect("rumix:index")
+        else:
+            messages.error(request, "Corrija os campos e tente novamente.")
+    else:
+        form = UsuarioCreationForm()
+
+    return render(request, "registration/register.html", {"form": form})
+
 @login_required(login_url='usuarios:login')
 @permission_required("usuarios.view_usuario", raise_exception=True)
 def usuarios(request):
