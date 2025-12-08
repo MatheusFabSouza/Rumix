@@ -1,74 +1,47 @@
 {% extends "rumix/base.html" %}
 {% load static %}
-<<<<<<< HEAD
-
-{% block title %}Meu Perfil{% endblock %}
-
+{% block title %}Meu Perfil | Rumix{% endblock %}
 {% block content %}
-<div class="container py-5" style="max-width: 500px;">
-
-    <!-- CARD -->
-    <div class="card perfil-card shadow-sm p-4 text-center">
-
+<div class="container py-4" style="max-width: 600px;">
+    <h1 class="mb-4 text-center">Meu Perfil</h1>
+    <div class="card shadow p-4 text-center">
         <!-- FOTO DE PERFIL -->
         {% if user.foto_perfil %}
-            <img src="{{ user.foto_perfil.url }}" class="rounded-circle mb-3 perfil-img">
+            <img src="{{ user.foto_perfil.url }}"
+                 class="rounded-circle mb-3"
+                 style="height:140px; width:140px; object-fit:cover;">
         {% else %}
-            <img src="{% static 'img/default_user.png' %}" class="rounded-circle mb-3 perfil-img">
+            <img src="{% static 'img/default_user.png' %}"
+                 class="rounded-circle mb-3"
+                 style="height:140px; width:140px; object-fit:cover;">
         {% endif %}
-
-        <!-- NOME -->
-        <h3 class="mb-1 perfil-nome">{{ user.first_name }} {{ user.last_name }}</h3>
-        <!-- EMAIL -->
-        <p class="perfil-email mb-3">{{ user.email }}</p>
-
-        <!-- BOTÃO EDITAR PERFIL -->
-        <a href="{% url 'usuarios:editar_perfil' %}" class="btn btn-entrar btn-perfil">
-            Editar Perfil
-        </a>
-
-=======
-{% block title %}Meu Perfil{% endblock %}
-{% block content %}
-<div class="container py-4">
-    <h1 class="mb-4 text-center">Meu Perfil</h1>
-    <div class="card mx-auto shadow" style="max-width: 600px;">
-        <div class="card-body text-center">
-            {% if user.foto_perfil %}
-                <img src="{{ user.foto_perfil.url }}"
-                     class="rounded-circle mb-3"
-                     style="height:140px; width:140px; object-fit:cover;">
-            {% else %}
-                <img src="{% static 'img/default_user.png' %}"
-                     class="rounded-circle mb-3"
-                     style="height:140px; width:140px; object-fit:cover;">
+        <!-- NOME / EMAIL -->
+        <h3 class="mb-1">{{ user.first_name }} {{ user.last_name }}</h3>
+        <p class="text-muted mb-3">{{ user.email }}</p>
+        <hr>
+        <!-- DADOS EXTRAS -->
+        <div class="text-start">
+            <p><strong>Usuário:</strong> {{ user.username }}</p>
+            {% if user.cargo %}
+            <p><strong>Cargo:</strong> {{ user.cargo }}</p>
             {% endif %}
-            <h3>{{ user.first_name }} {{ user.last_name }}</h3>
-            <p class="text-muted">{{ user.email }}</p>
-            <hr>
-            <div class="text-start">
-                <p><strong>Usuário:</strong> {{ user.username }}</p>
-                {% if user.cargo %}
-                <p><strong>Cargo:</strong> {{ user.cargo }}</p>
-                {% endif %}
-                {% if user.telefone %}
-                <p><strong>Telefone:</strong> {{ user.telefone }}</p>
-                {% endif %}
-                {% if user.endereco %}
-                <p><strong>Endereço:</strong> {{ user.endereco }}</p>
-                {% endif %}
-            </div>
-            <hr>
-            <div class="d-flex justify-content-center gap-2">
-                <a href="{% url 'usuarios:editar_perfil' %}" class="btn btn-primary">
-                    Editar Perfil
-                </a>
-                <a href="{% url 'usuarios:password_change' %}" class="btn btn-outline-secondary">
-                    Trocar Senha
-                </a>
-            </div>
+            {% if user.telefone %}
+            <p><strong>Telefone:</strong> {{ user.telefone }}</p>
+            {% endif %}
+            {% if user.endereco %}
+            <p><strong>Endereço:</strong> {{ user.endereco }}</p>
+            {% endif %}
         </div>
->>>>>>> 57b213e71e33c2acc0655d7f5a06574a71f593fb
+        <hr>
+        <!-- BOTÕES -->
+        <div class="d-flex justify-content-center gap-2">
+            <a href="{% url 'usuarios:editar_perfil' %}" class="btn btn-primary">
+                Editar Perfil
+            </a>
+            <a href="{% url 'usuarios:password_change' %}" class="btn btn-outline-secondary">
+                Trocar Senha
+            </a>
+        </div>
     </div>
 </div>
 {% endblock %}

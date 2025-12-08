@@ -1,38 +1,57 @@
 {% extends "rumix/base.html" %}
 {% load crispy_forms_filters %}
-{% block title %}Lista de Animais/Adicionar | Rumix {% endblock %}
+{% block title %}Lista de Animais | Rumix{% endblock %}
 {% block content %}
-<h1>{{ titulo }}</h1>
-<a href="{% url 'animais:cadastrar' %}" class="btn btn-success mb-3">Cadastrar Novo Animal</a>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>ID do Animal</th>
-      <th>Nome</th>
-      <th></th>
-      <th>Gênero</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for animal in object_list %}
-    <tr>
-      <td>{{ animal.identificacao_animal }}</td>
-      <td>{{ animal.nome_animal }}</td>
-      <td>{{ animal.especie_animal.nome }}</td>
-      <td>{{ animal.get_genero_animal_display }}</td> 
-      <td>
-        <a href="{% url 'animais:detalhe' animal.id %}" class="btn btn-primary btn-sm">Detalhe</a>
-        <a href="{% url 'animais:editar' animal.id %}" class="btn btn-warning btn-sm">Editar</a>
-        <a href="{% url 'animais:excluir' animal.id %}" class="btn btn-danger btn-sm">Excluir</a>
-      </td>
-    </tr>
-    {% empty %}
-    <tr><td colspan="5" class="text-center">Nenhum animal cadastrado.</td></tr>
-    {% endfor %}
-  </tbody>
-</table>
-<div>
-  <a href="{% url 'rumix:index'%}" class="btn btn-primary btn-sm">Voltar para inicio</a>
+<div class="d-flex justify-content-center mt-4">
+    <div class="card shadow p-4" style="width: 100%; max-width: 900px;">
+        <!-- TÍTULO -->
+        <h1 class="text-center mb-4">Lista de Animais</h1>
+        <!-- BOTÃO CADASTRAR -->
+        <div class="text-end mb-3">
+            <a href="{% url 'animais:cadastrar' %}" class="btn btn-success">
+                + Cadastrar Novo Animal
+            </a>
+        </div>
+        <!-- TABELA -->
+        <div class="table-responsive">
+            <table class="table table-striped align-middle text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Espécie</th>
+                        <th>Gênero</th>
+                        <th style="width: 180px;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for animal in object_list %}
+                    <tr>
+                        <td>{{ animal.identificacao_animal }}</td>
+                        <td>{{ animal.nome_animal }}</td>
+                        <td>{{ animal.especie_animal.nome }}</td>
+                        <td>{{ animal.get_genero_animal_display }}</td>
+                        <td>
+                            <a href="{% url 'animais:detalhe' animal.id %}" class="btn btn-primary btn-sm">Detalhe</a>
+                            <a href="{% url 'animais:editar' animal.id %}" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="{% url 'animais:excluir' animal.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center py-3">Nenhum animal cadastrado.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- BOTÃO VOLTAR -->
+        <div class="mt-3 text-start">
+            <a href="{% url 'rumix:index' %}" class="btn btn-primary btn-sm">
+                Voltar para Início
+            </a>
+        </div>
+
+    </div>
 </div>
 {% endblock %}
