@@ -13,11 +13,9 @@
           {% endfor %}
         {% endif %}
         <form method="post">
-          {% csrf_token %}
+          {% csrf_token %}  
           {% if form %}
             {{ form|crispy }}
-          {% else %}
-            <div class="mb-3">Formulário indisponível.</div>
           {% endif %}
           <div class="d-flex justify-content-between align-items-center">
             <button type="submit" class="btn btn-rumix">Entrar</button>
