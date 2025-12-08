@@ -56,30 +56,30 @@ body {
 /* PERFIL */
 .perfil-container {
     max-width: 500px;
-    margin: 50px auto 0;
+    margin: 50px auto !important;
+    display: flex;
+    justify-content: center;
 }
 
 .perfil-card {
+    width: 100%;
+    max-width: 420px;
     background-color: var(--bg-card);
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-soft);
     text-align: center;
-    transition: background-color 0.35s ease, box-shadow 0.35s ease;
+    margin: 0 auto;
 }
+
 
 body.dark .perfil-card {
     box-shadow: 0 4px 12px rgba(0,0,0,0.35);
 }
 
-.perfil-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 15px;
-    border: 2px solid var(--text-light);
-    transition: border-color 0.35s ease;
+.card img.rounded-circle {
+    display: block;
+    margin: 0 auto !important;
 }
 
 .perfil-nome {

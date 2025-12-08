@@ -1,31 +1,24 @@
 {% extends "rumix/base.html" %}
 {% load static %}
-
 {% block title %}Meu Perfil{% endblock %}
-
 {% block content %}
 <div class="container py-5" style="max-width: 500px;">
-
     <!-- CARD -->
-    <div class="card perfil-card shadow-sm p-4 text-center">
-
+    <div class="perfil-card shadow-sm p-4 text-center">
         <!-- FOTO DE PERFIL -->
         {% if user.foto_perfil %}
             <img src="{{ user.foto_perfil.url }}" class="rounded-circle mb-3 perfil-img">
         {% else %}
             <img src="{% static 'img/default_user.png' %}" class="rounded-circle mb-3 perfil-img">
         {% endif %}
-
         <!-- NOME -->
         <h3 class="mb-1 perfil-nome">{{ user.first_name }} {{ user.last_name }}</h3>
         <!-- EMAIL -->
         <p class="perfil-email mb-3">{{ user.email }}</p>
-
         <!-- BOTÃO EDITAR PERFIL -->
         <a href="{% url 'usuarios:editar_perfil' %}" class="btn btn-entrar btn-perfil">
             Editar Perfil
         </a>
-
     </div>
 </div>
 {% endblock %}
