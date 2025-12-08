@@ -34,6 +34,13 @@
           <img src="{{ animal.vacinas_animal.url }}" alt="Vacinas">
       </div>
     {% endif %}
+    <p><strong>Fazenda:</strong>
+    {% if animal.fazenda %}
+        <a href="{% url 'fazendas:detalhe' animal.fazenda.id %}">
+            {{ animal.fazenda.nome_fazenda }}
+        </a>
+    {% endif %}
+    </p>
     {% if confirm_delete %}
       <p class="text-center mt-3">
         Tem certeza que deseja excluir <strong>{{ animal.nome_animal }}</strong>?

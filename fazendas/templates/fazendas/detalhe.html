@@ -9,6 +9,17 @@
              class="img-fluid rounded mb-3"
              style="height: 250px; width: 100%; object-fit: cover;">
         {% endif %}
+            <hr>
+            <h4>Animais desta fazenda:</h4>
+            {% if fazenda.animais.all %}
+                <ul>
+                    {% for animal in fazenda.animais.all %}
+                        <a href="{% url 'animais:detalhe' animal.id %}">{{ animal.nome_animal }}</a>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted">(Nenhum animal cadastrado aqui)</p>
+            {% endif %}
         <p class="text-muted">{{ fazenda.sobre_fazenda }}</p>
             {% if confirm_delete %}
                 <form method="post" action="{% url 'fazendas:excluir' fazenda.id %}">
