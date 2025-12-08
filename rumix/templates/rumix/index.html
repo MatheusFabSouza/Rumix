@@ -50,8 +50,10 @@
     </div>
   </div>
 </div>
+{% if not user.is_authenticated %}
 <div class="p-4 bg-white rounded shadow d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
   <div>
+<div>
     <h5 class="mb-1 fw-bold">Pronto para começar?</h5>
     <p class="mb-0 text-muted">Crie sua conta, faça login e aproveite as funções do Rumix!</p>
   </div>
@@ -59,4 +61,5 @@
     <a href="{% url 'rumix:login' %}" class="btn btn-success btn-lg">Ir para Login</a>
   </div>
 </div>
+{% endif %}
 {% endblock %}
