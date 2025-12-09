@@ -16,15 +16,6 @@
         {% endif %}
         <h3 class="perfil-nome mb-1">{{ user.first_name }} {{ user.last_name }}</h3>
         <p class="perfil-email mb-3">{{ user.email }}</p>
-        <hr>
-        <!-- DADOS EXTRAS -->
-        <div class="text-start">
-            <p><strong>Usuário:</strong> {{ user.username }}</p>
-            {% if user.cargo %}<p><strong>Cargo:</strong> {{ user.cargo }}</p>{% endif %}
-            {% if user.telefone %}<p><strong>Telefone:</strong> {{ user.telefone }}</p>{% endif %}
-            {% if user.endereco %}<p><strong>Endereço:</strong> {{ user.endereco }}</p>{% endif %}
-        </div>
-        <hr>
         <!-- BOTÕES -->
         <div class="d-flex justify-content-center gap-2">
             <a href="{% url 'usuarios:editar_perfil' %}" class="btn btn-entrar">Editar Perfil</a>
