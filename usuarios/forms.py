@@ -25,9 +25,7 @@ class UsuarioUpdateForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs.update({'class': 'form-control'})
-        # Campos obrigatórios
         self.fields["first_name"].required = True
         self.fields["last_name"].required = True
         self.fields["email"].required = True
-        # Foto não fica com form-control
         self.fields["foto_perfil"].widget.attrs['class'] = 'form-control-file'

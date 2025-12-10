@@ -1,26 +1,18 @@
 {% extends "rumix/base.html" %}
 {% load crispy_forms_tags %}
-
 {% block title %}{{ titulo }} | Rumix{% endblock %}
-
 {% block content %}
-
 <div class="d-flex justify-content-center mt-5">
     <div class="card shadow p-4" style="width: 100%; max-width: 600px;">
-
         <h2 class="text-center mb-4">{{ titulo }}</h2>
-
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form|crispy }}
-
             <div class="text-center mt-3">
                 <button type="submit" class="btn btn-success">Salvar</button>
                 <a href="{% url 'fazendas:lista' %}" class="btn btn-secondary ms-2">Cancelar</a>
             </div>
         </form>
-
     </div>
 </div>
-
 {% endblock %}

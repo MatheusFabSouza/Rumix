@@ -28,7 +28,6 @@ class AnimalForm(forms.ModelForm):
 
         self.helper.layout = Layout(
             HTML("<h2 class='card-title'>Cadastrar Animal</h2>"),
-
             Div(
                 "nome_animal",
                 "genero_animal",
@@ -39,7 +38,6 @@ class AnimalForm(forms.ModelForm):
                 "fazenda",
                 css_class="text-start"
             ),
-
             FormActions(
                 Submit("submit", "Salvar", css_class="btn-criar"),
                 HTML("<a href='/animais/' class='btn btn-outline-success ms-2'>Cancelar</a>")

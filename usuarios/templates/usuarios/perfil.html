@@ -4,7 +4,6 @@
 {% block content %}
 <div class="container py-4" style="max-width: 600px;">
     <div class="perfil-card shadow-sm p-4 text-center">
-        <!-- FOTO -->
         {% if user.foto_perfil %}
             <img src="{{ user.foto_perfil.url }}" 
                  class="rounded-circle perfil-img mb-3"
@@ -16,7 +15,6 @@
         {% endif %}
         <h3 class="perfil-nome mb-1">{{ user.first_name }} {{ user.last_name }}</h3>
         <p class="perfil-email mb-3">{{ user.email }}</p>
-        <!-- BOTÕES -->
         <div class="d-flex justify-content-center gap-2">
             <a href="{% url 'usuarios:editar_perfil' %}" class="btn btn-entrar">Editar Perfil</a>
             <a href="{% url 'usuarios:password_change' %}" class="btn btn-outline-secondary">Trocar Senha</a>

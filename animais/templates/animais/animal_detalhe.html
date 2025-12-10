@@ -25,13 +25,13 @@
     <h1 class="text-center mb-3">{{ animal.nome_animal }}</h1>
     {% if animal.foto_animal %}
     <div class="animal-img-box">
-        <img src="{{ animal.foto_animal.url }}" alt="Foto do animal">
+        <img src="{{ animal.foto_animal.url }}">
     </div>
     {% endif %}
     {% if animal.vacinas_animal %}
       <h4 class="text-center mt-3 mb-2">Vacinas</h4>
       <div class="animal-img-box">
-          <img src="{{ animal.vacinas_animal.url }}" alt="Vacinas">
+          <img src="{{ animal.vacinas_animal.url }}">
       </div>
     {% endif %}
     <p><strong>Fazenda:</strong>
