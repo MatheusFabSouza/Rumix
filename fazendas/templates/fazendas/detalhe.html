@@ -1,49 +1,45 @@
 {% extends "rumix/base.html" %}
-{% block title %}{{ fazenda.nome_fazenda }} | Rumix{% endblock %}
+{% block title %}{{ fazenda.nome_fazenda }} - Rumix{% endblock %}
 {% block content %}
 <div class="d-flex justify-content-center mt-4">
     <div class="card shadow p-4" style="width: 100%; max-width: 700px;">
         <h2 class="text-center mb-3">{{ fazenda.nome_fazenda }}</h2>
         {% if fazenda.foto_fazenda %}
-        <img src="{{ fazenda.foto_fazenda.url }}"
-             class="img-fluid rounded mb-3"
-             style="height: 250px; width: 100%; object-fit: cover;">
+            <img src="{{ fazenda.foto_fazenda.url }}"
+                 class="img-fluid rounded mb-3"
+                 style="height: 250px; width: 100%; object-fit: cover;">
         {% endif %}
-            <hr>
-            <h4>Animais desta fazenda:</h4>
-            {% if fazenda.animais.all %}
-                <ul>
-                    {% for animal in fazenda.animais.all %}
-                        <a href="{% url 'animais:detalhe' animal.id %}">{{ animal.nome_animal }}</a>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p class="text-muted">(Nenhum animal cadastrado aqui)</p>
-            {% endif %}
+        <p><strong>Dono da fazenda:</strong> {{ fazenda.dono_fazenda }}</p>
         <p class="text-muted">{{ fazenda.sobre_fazenda }}</p>
-            {% if confirm_delete %}
-                <form method="post" action="{% url 'fazendas:excluir' fazenda.id %}">
-                    {% csrf_token %}
-                    <p class="text-danger fw-bold">Tem certeza que deseja excluir esta fazenda?</p>
-                    <button type="submit" class="btn btn-danger">
-                        Confirmar exclusão
-                    </button>
-                    <a href="{% url 'fazendas:detalhe' fazenda.id %}" class="btn btn-secondary ms-2">
-                        Cancelar
-                    </a>
-                </form>
-            {% else %}
-                <a href="{% url 'fazendas:editar' fazenda.id %}" class="btn btn-primary">
-                    Editar
-                </a>
-                <a href="{% url 'fazendas:lista' %}" class="btn btn-outline-secondary ms-2">
-                    Voltar
-                </a>
-                <a href="{% url 'fazendas:excluir' fazenda.id %}" class="btn btn-danger ms-2">
-                    Excluir
-                </a>
-            {% endif %}
-        </div>
+        <hr>
+        <h4>Animais desta fazenda</h4>
+        {% if fazenda.animais.exists %}
+            <ul>
+                {% for animal in fazenda.animais.all %}
+                        <a href="{% url 'animais:detalhe' animal.id %}">
+                            {{ animal.nome_animal }}
+                        </a>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-muted">(Nenhum animal cadastrado nesta fazenda)</p>
+        {% endif %}
+        <hr>
+        {% if confirm_delete %}
+            <form method="post" action="{% url 'fazendas:excluir' fazenda.id %}">
+                {% csrf_token %}
+                <p class="text-danger fw-bold">Tem certeza que deseja excluir esta fazenda?</p>
+                <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
+                <a href="{% url 'fazendas:detalhe' fazenda.id %}" class="btn btn-secondary ms-2">Cancelar</a>
+            </form>
+            <div class="text-center"> 
+        {% else %} 
+            <div class="d-flex gap-2 mb-3 justify-content-center"> 
+                <a href="{% url 'fazendas:editar' fazenda.id %}" class="btn btn-primary"> Editar</a> 
+                <a href="{% url 'fazendas:lista' %}" class="btn btn-outline-secondary"> Voltar</a> 
+                <a href="{% url 'fazendas:excluir' fazenda.id %}" class="btn btn-danger"> Excluir</a> 
+            </div> 
+        {% endif %} 
     </div>
 </div>
 {% endblock %}

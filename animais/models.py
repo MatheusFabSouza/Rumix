@@ -12,8 +12,9 @@ class Animal(models.Model):
 
     class Porte(models.TextChoices):
         GRANDE = 'G', 'Grande Porte'
+        MEDIO = 'A', 'Médio Porte'
         PEQUENO = 'P', 'Pequeno Porte'
-    porte_animal = models.CharField(max_length=1, choices=Porte.choices, default=Porte.PEQUENO)
+    porte_animal = models.CharField(max_length=1, choices=Porte.choices, default=Porte.MEDIO)
 
     class Classificacao(models.TextChoices):
         BOVINO = 'B', 'Bovino'

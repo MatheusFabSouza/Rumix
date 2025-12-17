@@ -1,7 +1,7 @@
 {% extends "rumix/base.html" %} 
-{% block title %}{{ animal.nome_animal }} | Rumix{% endblock %}
+{% block title %}{{ animal.nome_animal }} - Rumix{% endblock %}
 {% block content %}
-<style>
+<style> 
 .animal-img-box {
     width: 300px !important;
     height: 300px !important;
@@ -42,9 +42,7 @@
     {% endif %}
     </p>
     {% if confirm_delete %}
-      <p class="text-center mt-3">
-        Tem certeza que deseja excluir <strong>{{ animal.nome_animal }}</strong>?
-      </p>
+      <p class="text-center mt-3">Tem certeza que deseja excluir <strong>{{ animal.nome_animal }}</strong>?</p>
       <form method="post" action="{% url 'animais:excluir' animal.id %}" class="text-center">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Sim, excluir</button>

@@ -1,13 +1,11 @@
 {% extends "rumix/base.html" %}
 {% load static %}
-{% block title %}Usuarios | Rumix{% endblock %}
+{% block title %}Usuarios - Rumix{% endblock %}
 {% block content %}
 <div class="card form-card shadow-sm mt-4" style="max-width: 650px; margin: 0 auto;">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2 class="m-0">Usuários</h2>
-        <a href="{% url 'usuarios:usuarios_novo' %}" class="btn btn-success">
-            Novo Usuário
-        </a>
+        <a href="{% url 'usuarios:usuarios_novo' %}" class="btn btn-success">Novo Usuário</a>
     </div>
     <div class="table-responsive">
         <table class="table table-hover align-middle">
@@ -35,9 +33,7 @@
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="5" class="text-center text-muted py-3">
-                        Nenhum usuário cadastrado.
-                    </td>
+                    <td colspan="5" class="text-center text-muted py-3">Nenhum usuário cadastrado.</td>
                 </tr>
                 {% endfor %}
             </tbody>

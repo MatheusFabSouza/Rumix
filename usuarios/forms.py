@@ -5,12 +5,22 @@ from .models import Usuario
 class UsuarioCreationForm(UserCreationForm):
     class Meta:
         model = Usuario
-        fields = ['username', 'first_name', 'last_name', 'email']
-    
+        fields = ["username", "first_name", "last_name", "email"]
+
 class UsuarioForm(forms.ModelForm):
     class Meta:
         model = Usuario
-        fields = ["username", "first_name", "last_name", "email", "is_active", "foto_perfil", "data_nascimento", "groups"]
+        fields = [
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "is_active",
+            "foto_perfil",
+            "data_nascimento",
+            "groups",
+        ]
+
 class UsuarioUpdateForm(forms.ModelForm):
     class Meta:
         model = Usuario
@@ -21,11 +31,3 @@ class UsuarioUpdateForm(forms.ModelForm):
             "foto_perfil",
             "data_nascimento",
         ]
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.widget.attrs.update({'class': 'form-control'})
-        self.fields["first_name"].required = True
-        self.fields["last_name"].required = True
-        self.fields["email"].required = True
-        self.fields["foto_perfil"].widget.attrs['class'] = 'form-control-file'

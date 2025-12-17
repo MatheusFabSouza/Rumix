@@ -1,0 +1,10 @@
+{% extends "rumix/base.html" %}
+{% block title %}Saiu - Rumix{% endblock %}
+{% block content %}
+<div class="text-center">
+  <h4 class="mb-3">Você saiu</h4>
+  <a href="{% url 'rumix:index' %}" class="btn btn-success">
+    Voltar para o início
+  </a>
+</div>
+{% endblock %}

@@ -11,9 +11,7 @@
         {% endif %}
         <h3 class="mb-1 perfil-nome">{{ user.first_name }} {{ user.last_name }}</h3>
         <p class="perfil-email mb-3">{{ user.email }}</p>
-        <a href="{% url 'usuarios:editar_perfil' %}" class="btn btn-entrar btn-perfil">
-            Editar Perfil
-        </a>
+        <a href="{% url 'usuarios:editar_perfil' %}" class="btn btn-entrar btn-perfil"> Editar Perfil</a>
     </div>
 </div>
 {% endblock %}

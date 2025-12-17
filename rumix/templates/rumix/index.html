@@ -1,5 +1,5 @@
 {% extends "rumix/base.html" %}
-{% block title %}Início | Rumix{% endblock %}
+{% block title %}Início - Rumix{% endblock %}
 {% load static %}
 {% load crispy_forms_filters %}
 {% block content %}
@@ -7,7 +7,7 @@
   <div class="row align-items-center">
     <div class="col-md-7">
       <h1 class="display-5 fw-bold">Rumix — a rede do meio rural</h1>
-      <p class="lead text-muted">Gerencie animais e fazendas, compartilhe fotos de seus animais e fazendas.</p>
+      <p class="lead text-muted">Gerencie animais e fazendas, compartilhe fotos dos seus animais e fazendas.</p>
       <div class="mt-4">
         <a href="{% url 'animais:lista' %}" class="btn btn-success btn-lg me-2">Ver Animais</a>
         <a href="{% url 'fazendas:lista' %}" class="btn btn-outline-success btn-lg">Minhas Fazendas</a>
@@ -58,7 +58,7 @@
     <p class="mb-0 text-muted">Crie sua conta, faça login e aproveite as funções do Rumix!</p>
   </div>
   <div>
-    <a href="{% url 'rumix:login' %}" class="btn btn-success btn-lg">Ir para Login</a>
+    <a href="{% url 'usuarios:login' %}" class="btn btn-success btn-lg">Ir para Login</a>
   </div>
 </div>
 {% endif %}

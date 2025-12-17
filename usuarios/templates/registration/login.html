@@ -1,6 +1,6 @@
 {% extends "rumix/base.html" %}
 {% load crispy_forms_tags %}
-{% block title %}Entrar | Rumix{% endblock %}
+{% block title %}Entrar - Rumix{% endblock %}
 {% block content %}
 <div class="row justify-content-center">
   <div class="col-md-6 col-lg-5">
@@ -9,19 +9,22 @@
         <h3 class="card-title text-center mb-3">Entrar</h3>
         {% if messages %}
           {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} small" role="alert">{{ message }}</div>
+            <div class="alert alert-{{ message.tags }} small" role="alert">
+              {{ message }}
+            </div>
           {% endfor %}
         {% endif %}
         <form method="post">
-          {% csrf_token %}  
-          {% if form %}
-            {{ form|crispy }}
-          {% endif %}
-          <div class="d-flex justify-content-between align-items-center">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <div class="d-flex justify-content-between align-items-center mt-3">
             <button type="submit" class="btn btn-rumix">Entrar</button>
-           <a href="{% url 'usuarios:register' %}" class="btn-criar">Criar conta</a>
+            <a href="{% url 'usuarios:register' %}" class="btn-criar"> Criar conta</a>
           </div>
         </form>
+        <div class="text-center mt-3">
+            <a href="{% url 'usuarios:password_reset' %}" class="small text-muted">Esqueceu a senha?</a>
+        </div>
       </div>
     </div>
   </div>
