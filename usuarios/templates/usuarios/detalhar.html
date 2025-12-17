@@ -1,10 +1,14 @@
 {% extends "rumix/base.html" %}
 {% block title %}{{ usuario.username }} - Rumix{% endblock %}
 {% block content %}
-<h1>{{ usuario.get_full_name|default:usuario.username }}</h1>
-<p><strong>Email:</strong> {{ usuario.email }}</p>
-<p><strong>Data de nascimento:</strong> {{ usuario.data_nascimento|date:"d/m/Y" }}</p>
-<p><strong>Ultimo login:</strong> {{ usuario.last_login|date:"d/m/Y H:i" }}</p>
-<a href="{% url 'usuarios:usuarios_editar' usuario.id %}" class="btn btn-warning">Editar</a>
-<a href="{% url 'usuarios:usuarios' %}" class="btn btn-secondary">Voltar</a>
+<div class="container py-4 d-flex justify-content-center">
+  <div class="card shadow p-4" style="width: 100%; max-width: 700px;">
+    <h1>{{ usuario.get_full_name|default:usuario.username }}</h1>
+    <p><strong>Email:</strong> {{ usuario.email }}</p>
+    <p><strong>Data de nascimento:</strong> {{ usuario.data_nascimento|date:"d/m/Y" }}</p>
+    <p><strong>Ultimo login:</strong> {{ usuario.last_login|date:"d/m/Y H:i" }}</p>
+    <a href="{% url 'usuarios:usuarios_editar' usuario.id %}" class="btn btn-warning">Editar</a>
+    <a href="{% url 'usuarios:usuarios' %}" class="btn btn-secondary">Voltar</a>
+ </div>
+</div>
 {% endblock %}
