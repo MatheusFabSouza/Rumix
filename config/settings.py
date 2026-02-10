@@ -20,13 +20,35 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%33rccz=u*hgzej8swwk-i!y#h^a75)64v5x3#r&#y)=adfmwf'
+import os
+from pathlib import Path
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-ALLOWED_HOSTS = []
+# Segurança
+SECRET_KEY = os.environ.get('SECRET_KEY', 'chave-padrao-desenvolvimento')
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']  # ajuste em produção
 
+# Banco de dados PostgreSQL
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB', 'django_db'),
+        'USER': os.environ.get('POSTGRES_USER', 'django_user'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'senha_segura_do_banco'),
+        'HOST': os.environ.get('DB_HOST', 'db'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+    }
+}
+
+# Arquivos estáticos
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Arquivos de mídia (uploads)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Application definition
 
