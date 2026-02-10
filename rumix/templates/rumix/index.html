@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="col-md-5 mt-4 mt-md-0 text-center">
-      <img src="{% static 'css/images/fazenda.png' %}"class="img-fluid rounded shadow" style="max-height:250px; object-fit:cover;">
+      <img src="{% static 'css/images/fazenda.png' %}" class="img-fluid rounded shadow" style="max-height:250px; object-fit:cover;">
     </div>
   </div>
 </div>
@@ -51,9 +51,8 @@
   </div>
 </div>
 {% if not user.is_authenticated %}
-<div class="p-4 bg-white rounded shadow d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+<div class="p-4 bg-white rounded shadow d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 mb-5">
   <div>
-<div>
     <h5 class="mb-1 fw-bold">Pronto para começar?</h5>
     <p class="mb-0 text-muted">Crie sua conta, faça login e aproveite as funções do Rumix!</p>
   </div>
@@ -62,4 +61,32 @@
   </div>
 </div>
 {% endif %}
+<!-- tabela ajax-->
+<div class="bg-white rounded shadow-sm p-3 mb-5">
+  <div class="d-flex align-items-center mb-2">
+    <button id="btn-refresh" class="btn btn-outline-secondary me-2">↻</button>
+    <h4 class="m-0">Eventos recentes</h4>
+    <div class="ms-auto">
+      <button id="btn-novo" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEvento">Novo Evento</button>
+    </div>
+  </div>
+  <div id="div-tabela-eventos"></div>
+  <div class="modal fade" id="modalEvento" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" id="modal-evento-content"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+{{ block.super }}
+<script defer src="{% static 'js/eventos.js' %}"></script>
+<script>
+  window.addEventListener('load', function () {
+    Eventos.init({
+      tableUrl: "{% url 'eventos:table_partial' %}",
+      createUrl: "{% url 'eventos:create_ajax' %}"
+    });
+  });
+</script>
 {% endblock %}

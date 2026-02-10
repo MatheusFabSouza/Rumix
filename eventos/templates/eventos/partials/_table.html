@@ -1,0 +1,30 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Título</th>
+      <th>Fazenda</th>
+      <th>Animal</th>
+      <th>Descrição</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for e in eventos %}
+      <tr data-id="{{ e.id }}">
+        <td>{{ e.data|date:"d/m/Y H:i" }}</td>
+        <td>{{ e.titulo }}</td>
+        <td>{% if e.fazenda %}{{ e.fazenda.nome_fazenda }}{% else %}-{% endif %}</td>
+        <td>{% if e.animal %}{{ e.animal.nome_animal }}{% else %}-{% endif %}</td>
+        <td>{{ e.descricao|truncatechars:80 }}</td>
+        <td>
+          <button class="btn btn-sm btn-info btn-detail" data-url="{% url 'eventos:detail_ajax' e.id %}">Detalhar</button>
+          <button class="btn btn-sm btn-primary btn-edit" data-url="{% url 'eventos:edit_ajax' e.id %}">Editar</button>
+          <button class="btn btn-sm btn-danger btn-delete" data-url="{% url 'eventos:delete_ajax' e.id %}">Excluir</button>
+        </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="6" class="text-center">Nenhum evento encontrado.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>

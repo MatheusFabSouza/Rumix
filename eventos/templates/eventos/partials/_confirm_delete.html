@@ -1,0 +1,14 @@
+<div class="modal-header">
+  <h5 class="modal-title">Remover Evento - Rumix</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<form id="eventoForm" method="post" action="{% url 'eventos:delete_ajax' evento.id %}" data-url="{% url 'eventos:delete_ajax' evento.id %}">
+  <div class="modal-body">
+    {% csrf_token %}
+    <p>Confirma a remoção do evento <strong>{{ evento.titulo }}</strong> ({{ evento.data|date:"d/m/Y H:i" }})?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+    <button type="submit" class="btn btn-danger">Confirmar remoção</button>
+  </div>
+</form>

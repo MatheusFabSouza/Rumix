@@ -1,0 +1,33 @@
+{% extends "rumix/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container py-3">
+  <div class="d-flex align-items-center mb-2">
+    <button id="btn-refresh" class="btn btn-outline-secondary me-2">↻</button>
+    <h3 class="m-0">Eventos - Rumix</h3>
+    <div class="ms-auto">
+      <button id="btn-novo" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEvento">Novo Evento - Rumix</button>
+    </div>
+  </div>
+  <div id="div-mensagens">{% include 'eventos/partials/_messages.html' %}</div>
+  <div id="div-tabela-eventos"></div>
+  <div class="modal fade" id="modalEvento" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" id="modal-evento-content"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+{{ block.super }}
+<script defer src="{% static 'js/eventos.js' %}"></script>
+<script>
+  window.addEventListener('load', function () {
+    Eventos.init({
+      tableUrl: "{% url 'eventos:table_partial' %}",
+      createUrl: "{% url 'eventos:create_ajax' %}",
+      messagesUrl: "{% url 'eventos:ajax_messages' %}"
+    });
+  });
+</script>
+{% endblock %}

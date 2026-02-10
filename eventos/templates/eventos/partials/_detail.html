@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h5 class="modal-title">Detalhes do Evento - Rumix</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+  <p><strong>Título:</strong> {{ evento.titulo }}</p>
+  <p><strong>Data:</strong> {{ evento.data|date:"d/m/Y H:i" }}</p>
+  <p><strong>Fazenda:</strong> {% if evento.fazenda %}{{ evento.fazenda.nome_fazenda }}{% else %}-{% endif %}</p>
+  <p><strong>Animal:</strong> {% if evento.animal %}{{ evento.animal.nome_animal }}{% else %}-{% endif %}</p>
+  <p><strong>Descrição:</strong><br>{{ evento.descricao|linebreaksbr }}</p>
+  <p class="text-muted small">{% if evento.criado_por %}Criado por {{ evento.criado_por.get_full_name|default:evento.criado_por.username }}{% else %}Sem autor{% endif %}</p>
+  {% if is_ajax %}
+    <div class="small text-muted">Só pra ter certeza que é AJAX</div>
+  {% endif %}
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+</div>

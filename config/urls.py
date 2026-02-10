@@ -7,6 +7,7 @@ urlpatterns = [
     path('animais/', include(('animais.urls', 'animais'), namespace='animais')),
     path('fazendas/', include(('fazendas.urls', 'fazendas'), namespace='fazendas')),
     path('usuarios/', include(('usuarios.urls', 'usuarios'), namespace='usuarios')),
+    path('eventos/', include(('eventos.urls', 'eventos'), namespace='eventos')),
     path('', include(('rumix.urls', 'rumix'), namespace='rumix')),
     path('admin/', admin.site.urls),
 ]
