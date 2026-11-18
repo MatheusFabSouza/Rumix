@@ -4,6 +4,7 @@ Django settings for config project.
 
 import os
 from pathlib import Path
+from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -13,6 +14,9 @@ SECRET_KEY = os.environ.get(
     "django-insecure-chave-apenas-para-desenvolvimento-local",
 )
 DEBUG = os.environ.get("DEBUG", "True").strip().lower() in ("1", "true", "yes", "on")
+
+if not DEBUG and SECRET_KEY == "django-insecure-chave-apenas-para-desenvolvimento-local":
+    raise ImproperlyConfigured("Defina uma SECRET_KEY forte no ambiente de produção.")
 
 ALLOWED_HOSTS = [
     host.strip()
